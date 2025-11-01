@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import Div from './cells.jsx';
 import {winlist,cells} from '../utils/constants.js'
-import {BrowserRouter, Route, Routes, Link, useNavigate} from 'react-router-dom'
+import {HashRouter, Route, Routes, Link, useNavigate} from 'react-router-dom'
 
 function Game() {
   const [player,setplayer]=useState("X");
