@@ -6,6 +6,7 @@ import Div from './cells.jsx';
 import {winlist,cells} from '../utils/constants.js'
 import {HashRouter, Route, Routes, Link, useNavigate} from 'react-router-dom'
 
+
 function Game() {
   const [player,setplayer]=useState("X");
   const[x,setx]=useState([]);
@@ -21,36 +22,26 @@ function Game() {
     for(let i=0;i<8;i++) {
       const wincheck_x=winlist[i].every(item => x.includes(item))
       const wincheck_o=winlist[i].every(item => o.includes(item))
-    if (wincheck_o || wincheck_x) {
-      wincheck_o? window.alert("Circle Won!"): window.alert("Cross won")
-      setx([]);
-      seto([]);
-      setplayer('X');
-      setrst(prev=> prev+1)
-      navigate('/');
+    if (wincheck_o || wincheck_x || x.length+o.length==9) {
+      const winner= wincheck_x? "X": wincheck_o? "O": "D"
+      navigate('/end',{state:{winner}})
       return true;
     }
-    
+  
     }
-    return false;
+
   }
-// cheks for draw
-const draw=() => {
-  if (x.length+o.length===9 && !wincheck()) {
-    window.alert('Draw!');
-    navigate('/');
-  }
-}
+
 // invokes the wincheck function after each move
   useEffect(() => {
    const iswin= wincheck();
-    if(!iswin) draw();
   }, [x,o]);
 
   return (
     <>
-    <div className=" bg-gray-900  h-screen" >
-      <div className='flex text-white font-mono font-bold italic text-6xl justify-center py-15'>Tic Tac Toe</div>
+    <div className="flex items-center justify-center bg-gradient-to-b from-gray-900 to bg-gray-950  h-screen" >
+      <div className='border-2 hover:border-4 hover:scale-105 h-160 w-120 border-white rounded-4xl bg-black transition-all duration-500'>
+      <div className='flex  text-white font-mono font-bold italic text-6xl justify-center py-15'>Tic Tac Toe</div>
     <div className='flex justify-center items-center'>
      <div className='flex flex-wrap justify-center w-99 h-99  gap-1.5 items-center' key={rst}>
       
@@ -59,7 +50,7 @@ const draw=() => {
     />
     ))}
         
-
+      </div>
      </div>
      </div>
      </div>

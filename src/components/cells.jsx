@@ -26,7 +26,7 @@ function Cell({player,setplayer,id,handlemove}) {
     }
 
     return(
-        <div className='flex items-center justify-center w-32  h-32 border-3 border-blue-600 rounded-xl gap-3 hover:scale-105 hover:bg-gray-800 transition-all active:scale-95 ' onClick={handleclick}>
+        <div className='flex items-center justify-center w-32  h-32 border-3 border-white rounded-xl gap-3 hover:scale-105 hover:bg-gray-800  transition-all active:scale-95 ' onClick={handleclick}>
             {turn==='X'? <img className=" w-24 h-24" src={cross}  />  :turn==="O"? <img src={circle}  className="w-24 h-24 " /> : <div/> }
         </div> 
     );
