@@ -12,8 +12,8 @@ function Start() {
   const [playwrong] = useSound(wrongs)
 
   const player_mode = localStorage.getItem('modeClicked')
-  const current_mode = localStorage.getItem('currentmode')
-  const current_diff = localStorage.getItem('currentdifficulty')
+  const current_mode = localStorage.getItem('currentmode') || 'Mode'
+  const current_diff = localStorage.getItem('currentdifficulty') || 'Difficulty'
 
   const [hover, sethover] = useState(null)
 
