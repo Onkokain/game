@@ -9,7 +9,7 @@ function End() {
    const [playhover]=useSound(hoversound,{volume:0.4})
        const[playactive]=useSound(optionselect)
        const game_type=localStorage.getItem('currentmode'|| "Player Vs Player")
-       
+       console.log(game_type)
     return(
         <>
         <div  className='flex flex-col h-screen w-auto items-center justify-center py-[15%] bg-linear-to-b from-gray-900 to-gray-950 gap-3'>
