@@ -8,7 +8,7 @@ function End() {
     const winner=location.state?.winner
    const [playhover]=useSound(hoversound,{volume:0.4})
        const[playactive]=useSound(optionselect)
-       const game_type=localStorage.getItem('currentmode')|| "Player Vs Player"
+       const game_type=localStorage.getItem('currentmode')|| "Player Vs Bot"
        console.log(game_type)
     return(
         <>
