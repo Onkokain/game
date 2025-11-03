@@ -8,12 +8,13 @@ function End() {
     const winner=location.state?.winner
    const [playhover]=useSound(hoversound,{volume:0.4})
        const[playactive]=useSound(optionselect)
+       const game_type=localStorage.getItem('currentmode')
        
     return(
         <>
         <div  className='flex flex-col h-screen w-auto items-center justify-center py-[15%] bg-linear-to-b from-gray-900 to-gray-950 gap-3'>
         <div className='flex shadow-[0_0_20px_white] h-40 w-160 border-4 rounded-4xl border-white items-center justify-center hover:scale-105 transition-all selection:bg-transparent bg-black duration-300'>
-        <div  className='font-mono italic font-bold text-white text-6xl'>{winner==="X"?"❌ Cross won!":winner==="O"?"🔵 Circle  won!":"It was a draw!"}</div>
+        <div  className='font-mono italic font-bold text-white text-6xl'>{game_type==='Player Vs Player'? winner==="X"?"❌ Cross won!":winner==="O"?"🔵 Circle  won!":"It was a draw!":game_type=="Player Vs Bot"?winner==="X"?"❌ You won!":winner==="O"?"You lost!":"It was a draw!":""}</div>
         
         </div>
         <div className='w-screen flex justify-center gap-5 py-4 '>

@@ -17,7 +17,7 @@
 export const states_mode=[
   { name: 'Player Vs Player', path: '#' },
   { name: 'Player Vs Bot', path: '#' },
-  { name: 'Bot vs Bot', path: '#' },
+  { name: 'Bot Vs Bot', path: '#' },
   
   ]
 export const states_diff=[
