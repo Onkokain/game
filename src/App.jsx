@@ -7,6 +7,7 @@ import Mode from './components/mode.jsx'
 import UD from './under_development.jsx'
 import Settings from './components/settings.jsx';
 import PvB from "./main_game/pvb.jsx"
+import PvP from "./main_game/pvpl.jsx"
 
 import {HashRouter, Route, Routes, Link} from 'react-router-dom'
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Route path='/underdevelopment' element={<UD/>}/>
       <Route path='/settings' element={<Settings/>}/>
       <Route path="/pvb" element={<PvB />} />  
+       <Route path="/pvp" element={<PvP />} />  
     </Routes>
     </HashRouter>
     

@@ -1,16 +1,64 @@
-
 <!doctype html>
 <html lang="en">
-  <head >
+  <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link rel="stylesheet" href="./src/index.css" />
     <title>Tic Tac Toe</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        transition: background 0.6s ease, color 0.6s ease, opacity 0.4s ease;
+      }
+
+      body.dark-theme {
+        background: linear-gradient(to bottom, #111827, #0f0f0f);
+      }
+
+      body.light-theme {
+        background: linear-gradient(to bottom, #FFF6E0, #F5E6C5);
+      }
+
+      body.fade-out {
+        opacity: 0;
+      }
+
+      body.fade-in {
+        opacity: 1;
+      }
+    </style>
   </head>
-  <body class="bg-linear-to-b from-gray-900 to-gray-950 h-screen">
-  <div id="root" ></div>
+
+  <body class="fade-in">
+    <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <script>
+      // 1️⃣ Apply correct theme BEFORE rendering anything
+      const currentTheme = localStorage.getItem('theme') || 'dark';
+      document.body.classList.add(`${currentTheme}-theme`);
+
+      // 2️⃣ Ensure fade starts with correct theme
+      window.addEventListener('beforeunload', () => {
+        document.body.classList.add('fade-out');
+      });
+
+      // 3️⃣ Optional: ensure fade-in when loaded
+      window.addEventListener('DOMContentLoaded', () => {
+        document.body.classList.remove('fade-out');
+        document.body.classList.add('fade-in');
+      });
+
+      // 4️⃣ React (optional): listen for theme toggle events
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'theme') {
+          document.body.classList.remove('dark-theme', 'light-theme');
+          document.body.classList.add(`${e.newValue}-theme`);
+        }
+      });
+    </script>
   </body>
 </html>
-
