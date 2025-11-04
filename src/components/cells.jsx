@@ -7,9 +7,10 @@ import optionselect from '../assets/select_button.mp3'
 import wrongs from '../assets/wrong.mp3'
 
 function Cell({player,setplayer,id,handlemove}) {
+    const set_volume=localStorage.getItem('volume')|| 0.5
     const[turn,setturn]=useState(null);
-      const [clicksound]=useSound(optionselect)
-       const [wrong]=useSound(wrongs,{volume:0.3})
+      const [clicksound]=useSound(optionselect,{volume:set_volume})
+       const [wrong]=useSound(wrongs,{volume:set_volume})
 
     const handleclick=() => {
         if (turn) {

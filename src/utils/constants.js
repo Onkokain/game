@@ -9,19 +9,26 @@
   ["13", "22", "31"]];
  export const cells = ["11", "12", "13", "21", "22", "23", "31", "32", "33"];
  export const states_start=[
-  { name: 'Start A New Game', path: '/game' },
+  { name: 'New Game', path: '/game' },
   { name: 'Difficulty', path: '/difficulty' },
   { name: 'Mode', path: '/mode' },
-  { name: 'Exit', path: '/' }
+  { name: 'Settings', path: '/settings' }
 ]
 export const states_mode=[
-  { name: 'Player Vs Player', path: '#' },
-  { name: 'Player Vs Bot', path: '#' },
-  { name: 'Bot Vs Bot', path: '#' },
+  { name: 'PvP Local', path: '#' },
+  { name: 'PvBot', path: '#' },
+  { name: 'PvP Online', path: '#' },
   
   ]
 export const states_diff=[
   { name: 'Easy', path: '#' },
   { name: 'Medium', path: '#' },
   { name: 'Hard', path: '#' },
+  ]
+
+export const states_settings=[
+  { name: 'Volume', path: '#' },
+  { name: 'Symbol', path: '#' },
+  { name: 'UI style', path: '#' },
+  
   ]

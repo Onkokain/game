@@ -9,13 +9,15 @@ import useSound from 'use-sound';
 
 
 function PvP() {
-  const [player,setplayer]=useState("X");
+  const player_symbol=localStorage.getItem('current_player')
+  const set_volume=localStorage.getItem('volume')|| 0.5
+  const [player,setplayer]=useState(player_symbol);
   const[x,setx]=useState([]);   
-  const[o,seto]=useState([]);
+  const[o,seto]=useState([]); 
   const[rst,setrst]=useState([0]);
   const navigate = useNavigate();   
-  const [Victor]=useSound(Victoryy);
-  const [fade,setfade]=useState(false);
+  const [Victor]=useSound(Victoryy,{volume:set_volume});
+  const [fade,setfade]=useState(false); 
 // stores move data into x and o
   const handlemove=(id,player) => {
     player==="X"?setx(prev => [...prev,id]): seto(prev=> [...prev,id])

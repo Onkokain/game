@@ -4,9 +4,12 @@ import useSound from 'use-sound'
 import {BrowserRouter, Route, Routes, Link} from 'react-router-dom'
 import { states_mode } from '../utils/constants'
 import { useState } from 'react'
+import wrongs from '../assets/wrong.mp3'
 function Mode() {
-    const [playhover]=useSound(hoversound,{volume:0.2})
-    const[playactive]=useSound(optionselect,{volume:0.5})
+  const set_volume=localStorage.getItem('volume')|| 0.5
+    const [playhover]=useSound(hoversound,{volume:set_volume})
+    const[playactive]=useSound(optionselect,{volume:set_volume})
+       const[playwrong]=useSound(wrongs,{volume:set_volume})
     const [clicked,setclicked]=useState(() => {
   const saved = localStorage.getItem('modeClicked')
   return saved !== null && saved!==3 ? Number(saved) : null
@@ -19,12 +22,12 @@ function Mode() {
 
             <header class="flex py-5  text-white text-5xl justify-center font-bold ">Tic Tac Toe</header>
           {states_mode.map((item,index)=>(<Link  onMouseEnter={playhover}
-  onClick={()=>{playactive()
+  onClick={()=>{index!=clicked?playactive():playwrong()
                 setclicked(index)
                 localStorage.setItem('modeClicked',index)
                 localStorage.setItem('currentmode',item.name)
               }}
-  className={`text-center text-white text-3xl border-2 p-5 rounded-3xl px-20 italic selection:bg-transparent ${index===clicked? 'text-white/50 hover:scale-105 border-4' : 'hover:scale-110 active:scale-[95%] '}`} to={item.path}>{item.name}</Link>))}
+  className={`w-85 text-center text-white text-3xl border-2 p-5 rounded-3xl px-20 italic selection:bg-transparent ${index===clicked? 'text-white/50  border-4' : 'hover:scale-110 active:scale-[95%] '}`} to={item.path}>{item.name}</Link>))}
         <Link to='/' onMouseEnter={playhover}
   onClick={playactive} className="text-center  text-white text-3xl border-2 p-5 rounded-3xl px-20 italic hover:scale-110 active:scale-[95%] selection:bg-transparent" >Return</Link>
 
